@@ -1,10 +1,11 @@
 import requests, json, random
 import pandas as pd
-
-FLYERS = 'https://flyers-ng.flippback.com/api/flipp/data?locale=en&postal_code={}&sid={}'
-FLYER_ITEMS = 'https://flyers-ng.flippback.com/api/flipp/flyers/{}/flyer_items?locale=en&sid={}'
-GROCERY_STORES = {'No Frills', 'FreshCo', 'Walmart', 'Loblaws'}
-
+import sys
+from pathlib import Path
+# parents[0] = flippscrape, [1] = Kiizon, [2] = src (contains config/)
+src_dir = Path(__file__).resolve().parents[2]
+sys.path.append(str(src_dir))
+from config.settings import FLYERS, FLYER_ITEMS, GROCERY_STORES
 
 def generate_sid():
     """
